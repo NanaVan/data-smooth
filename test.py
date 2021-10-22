@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from signal_smooth import *
 
 ''' load all data '''
-data = np.genfromtxt("Test.txt")
+data = np.genfromtxt("test.txt")
 x = data[:,0]
 y = data[:,1]
 

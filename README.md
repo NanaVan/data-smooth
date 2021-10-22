@@ -12,7 +12,7 @@ Class `SIGSMOOTH` in `signal_smooth.py` provides two methods for differenet situ
 - `PLS_interpolation`: used as if interval of x-coordinate is not equal
 
 ## Example
-Following the steps in `test.py` to find a most probable distribution line for data in `Test.txt`, you might have a glance at our method. 
+Following the steps in `test.py` to find a most probable distribution line for data in `test.txt`, you might have a glance at our method. 
 
 ## License
 This repository is licensed under the **GNU GPLv3**.
