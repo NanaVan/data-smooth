@@ -14,7 +14,7 @@ Class `SIGSMOOTH` in `signal_smooth.py` provides two methods for differenet situ
 ## PyScript version
 A website data smoother based on `PLS_expect` with the equal weight of each data point.
 After loading a .csv file and click `smooth`, the preliminary result is displayed via `bokeh`.
-online tool: [vercel](https://)
+online tool: [vercel](https://pyscript-data-smoother.vercel.app/)
 
 ## Example
 Following the steps in `test.py` to find a most probable distribution line for data in `test.txt`, you might have a glance at our method. 
