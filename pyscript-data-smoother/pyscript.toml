@@ -1,0 +1,2 @@
+name = "Data Smoother"
+packages = ["bokeh==3.2.2", "panel", "markdown-it-py", "numpy", "scipy"]
