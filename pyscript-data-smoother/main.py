@@ -25,12 +25,14 @@ def diff_sparse(v, n=1):
 class workPanel():
     def __init__(self):
         # file upload
-        pn.extension(design='material')
+        pn.extension(design='material', notifications=True)
+        self.notifications = pn.state.notifications
+        pn.state.notifications.info('start', duration=2000)
         self.file_input = pn.widgets.FileInput(accept='.csv', width=180, multiple=False)
         self.button_upload = pn.widgets.Button(name='Upload', button_type='primary', width=100)
         self.button_clear = pn.widgets.Button(name='Clear', button_type='primary', width=100)
         pn.Row(self.file_input, self.button_upload, self.button_clear, height=75).servable(target='fileinput')
-        self.p = figure(width=600, height=400)
+        self.p = figure(width=600, height=400, output_backend='webgl')
         pn.pane.Bokeh(self.p).servable(target='datafig')
         self.button_upload.on_click(self.process_file)
         self.button_clear.on_click(self.clear_file)
@@ -49,8 +51,11 @@ class workPanel():
             self.data = np.genfromtxt(io.BytesIO(self.file_input.value), delimiter=',', encoding='utf8')
             self.p.line(x=np.arange(len(self.data)),y=self.data, line_color='gray')
             console.log('updated!')
+            #self.notifications.info('file has been loaded.', duration=2000)
         else:
-            document.getElementById('result').innerHTML = "Upload your data first!"
+            #self.notifications.warning('upload your file first!', duration=2000)
+            pass
+            
 
     def clear_file(self, event):
         self.data = None
@@ -62,10 +67,12 @@ class workPanel():
             self.p.renderers = []
             self.p.line(x=np.arange(len(self.data)),y=self.data, line_color='gray')
         if self.data is None:
-            document.getElementById('result').innerHTML = "Upload your data first!"
+            #self.notifications.warning('upload your file first!', duration=2000)
+            #document.getElementById('result').innerHTML = "Upload your data first!"
             return
         document.getElementById('result').innerHTML = ""
         console.log('smooth start!')
+        #self.notifications.info('smoothing start!', duration=3000)
         self.smooth_method()
 
     def smooth_method(self):
@@ -94,6 +101,7 @@ class workPanel():
         np.savetxt("smoother_data.csv", z)
         pn.Row(pn.widgets.FileDownload(file="smoother_data.csv", button_type='success', width=200), height=80).servable(target='result')
         console.log('smooth complete!')
+        #self.notifications.success('smoothing complete!', duration=3000)
         self.smoothed = True
 
 worker = workPanel()
