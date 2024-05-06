@@ -27,7 +27,7 @@ class workPanel():
         # file upload
         pn.extension(design='material', notifications=True)
         self.notifications = pn.state.notifications
-        pn.state.notifications.info('start', duration=2000)
+        #pn.state.notifications.info('start', duration=2000)
         self.file_input = pn.widgets.FileInput(accept='.csv', width=180, multiple=False)
         self.button_upload = pn.widgets.Button(name='Upload', button_type='primary', width=100)
         self.button_clear = pn.widgets.Button(name='Clear', button_type='primary', width=100)
